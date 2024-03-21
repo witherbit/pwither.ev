@@ -223,11 +223,11 @@ EnumDispatcher.Unregister(obj);
 ```
 Методы любого диспетчера сводятся к:
 ```csharp
-public static void Register(object handler)										//регистрирует объект в системе
-public static void Unregister(object handler)									//удаляет объект из системы
-public static void UnregisterAll()														//удаляет все объекты из системы
-public static void RegisterByEventId(object handler, string id)		//регистрирует объект для идентификатора определенного события
+public static void Register(object handler)	//регистрирует объект в системе
+public static void Unregister(object handler)	//удаляет объект из системы
+public static void UnregisterAll()	//удаляет все объекты из системы
+public static void RegisterByEventId(object handler, string id)	//регистрирует объект для идентификатора определенного события
 public static void UnregisterByEventId(object handler, string id)	//удаляет объект для идентификатора определенного события
-public static void UnregisterAllByEventId(string id)						//удаляет все объекты, присущие определенному идентификатору события
-public static void Invoke(string id, params object[] eventArgs)		//вызывает собитие
+public static void UnregisterAllByEventId(string id)	//удаляет все объекты, присущие определенному идентификатору события
+public static void Invoke(string id, params object[] eventArgs)	//вызывает собитие
 ```
