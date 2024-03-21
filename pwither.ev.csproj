@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>pwither.ev</Title>
+    <Authors>Witherbit</Authors>
+    <Description>EN: A solution for calling events (methods) from a static class or using inheritance from a script class using attributes;
+RU: Решение для вызова событий (методов) из статического класса или использования наследования от класса script с использованием атрибутов.</Description>
+    <Copyright>© 2024 Witherbit</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
+</Project>
