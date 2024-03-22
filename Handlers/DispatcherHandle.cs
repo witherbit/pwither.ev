@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pwither.ev.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Reflection;
@@ -136,23 +137,23 @@ namespace pwither.ev
             var evHandle = eventHandlers.FirstOrDefault(x => x.Id == id);
             if (evHandle != null)
             {
-                foreach(var intanceHandle in evHandle.Methods)
+                foreach(var instanceHandle in evHandle.Methods)
                 {
-                    if (intanceHandle.Method.GetParameters().Length == eventArgs.Length)
+                    if (instanceHandle.Method.GetParameters().Length == eventArgs.Length)
                     {
-                        object handlerInstance = Activator.CreateInstance(intanceHandle.Method.DeclaringType);
-                        intanceHandle.Method?.Invoke(handlerInstance, eventArgs);
+                        object handlerInstance = Activator.CreateInstance(instanceHandle.Method.DeclaringType);
+                        instanceHandle.Method?.Invoke(handlerInstance, eventArgs);
                     }
                     else
                     {
-                        throw new ArgumentException($"The arguments for the called method '{id}' are incorrect or missing");
+                        throw new DispatcherEventException<string>($"The arguments for the called method '{id}' are incorrect or missing", instanceHandle.Instance, instanceHandle.Method, id);
                     }
                 }
             }
-            else
-            {
-                throw new Exception($"Handler for the event {id} not found");
-            }
+            //else
+            //{
+            //    throw new Exception($"Handler for the event {id} not found");
+            //}
         }
     }
 }

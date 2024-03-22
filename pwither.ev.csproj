@@ -10,10 +10,37 @@
     <Description>EN: A solution for calling events (methods) from a static class or using inheritance from a script class using attributes;
 RU: Решение для вызова событий (методов) из статического класса или использования наследования от класса script с использованием атрибутов.</Description>
     <Copyright>© 2024 Witherbit</Copyright>
+    <PackageProjectUrl>https://github.com/witherbit/pwither.ev</PackageProjectUrl>
+    <PackageIcon>wbax.png</PackageIcon>
+    <PackageReadmeFile>README (1).md</PackageReadmeFile>
+    <PackageTags>events, attributes, dispatcher</PackageTags>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+	<Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <IsAotCompatible>True</IsAotCompatible>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <IsAotCompatible>True</IsAotCompatible>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Tanukii\Downloads\README (1).md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="C:\Users\Tanukii\Downloads\wbax.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
