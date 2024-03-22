@@ -14,7 +14,7 @@ RU: Решение для вызова событий (методов) из ст
     <PackageIcon>wbax.png</PackageIcon>
     <PackageReadmeFile>README (1).md</PackageReadmeFile>
     <PackageTags>events, attributes, dispatcher</PackageTags>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>1.0.1.0</FileVersion>
 	<Version>1.0.3</Version>

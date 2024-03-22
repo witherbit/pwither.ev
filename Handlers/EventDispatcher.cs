@@ -38,5 +38,9 @@ namespace pwither.ev
         {
             dispatcher.Invoke(id, eventArgs);
         }
+        public static async Task InvokeAsync(string id, params object[] eventArgs)
+        {
+            await dispatcher.InvokeAsync(id, eventArgs);
+        }
     }
 }

@@ -142,8 +142,33 @@ namespace pwither.ev
                 {
                     if (instanceHandle.Method.GetParameters().Length == eventArgs.Length)
                     {
-                        object handlerInstance = Activator.CreateInstance(instanceHandle.Method.DeclaringType);
-                        instanceHandle.Method?.Invoke(handlerInstance, eventArgs);
+                        instanceHandle.Method?.Invoke(instanceHandle.Instance, eventArgs);
+                    }
+                    else
+                    {
+                        throw new DispatcherEventException<T>($"The arguments for the called method '{id}' are incorrect or missing", instanceHandle.Instance, instanceHandle.Method, id);
+                    }
+                }
+            }
+            //else
+            //{
+            //    throw new Exception($"Handler for the event {id} not found");
+            //}
+        }
+
+        public async Task InvokeAsync(T id, params object[] eventArgs)
+        {
+            var evHandle = eventHandlers.FirstOrDefault(x => x.Id.CompareGenerics(id));
+            if (evHandle != null)
+            {
+                foreach (var instanceHandle in evHandle.Methods)
+                {
+                    if (instanceHandle.Method.GetParameters().Length == eventArgs.Length)
+                    {
+                        await Task.Run(() =>
+                        {
+                            instanceHandle.Method?.Invoke(instanceHandle.Instance, eventArgs);
+                        });
                     }
                     else
                     {

@@ -29,5 +29,29 @@ namespace pwither.ev
                 }
             }
         }
+        public async Task InvokeEventAsync(string id, params object[] eventArgs)
+        {
+            Type type = this.GetType();
+            MethodInfo[] methods = type.GetMethods();
+
+            foreach (var method in methods)
+            {
+                var attribute = (LocalEventAttribute)method.GetCustomAttribute(typeof(LocalEventAttribute), false);
+                if (attribute != null && attribute.Id == id)
+                {
+                    if (method.GetParameters().Length == eventArgs.Length)
+                    {
+                        await Task.Run(() =>
+                        {
+                            method?.Invoke(this, eventArgs);
+                        });
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"The arguments for the called method '{id}' are incorrect or missing");
+                    }
+                }
+            }
+        }
     }
 }
